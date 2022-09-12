@@ -7,6 +7,7 @@ app.get('/ads', (request, response) => {
     { id: 1, name: 'Ads 1' },
     { id: 2, name: 'Ads 2' },
     { id: 3, name: 'Ads 3' },
+    { id: 4, name: 'Ads 4' },
   ]);
 });
 
