@@ -6,7 +6,7 @@ import {Entypo} from '@expo/vector-icons'
 import logoImg from '../../assets/logo-nlw-esports.png'
 import { styles } from './styles';
 import { GameParams } from '../../@types/navigation';
-import { FlatList, Image, TouchableOpacity, View } from 'react-native';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { THEME } from '../../theme';
 import { Heading } from '../../components/Heading';
 import { DuoCard, DuoCardProps } from '../../components/DuoCard';
@@ -68,9 +68,14 @@ export function Game() {
               />
           )}
           horizontal
-          contentContainerStyle={styles.contentList}
+          contentContainerStyle={[duos.length > 0 ? styles.contentList : styles.emptyListContent]}
           showsHorizontalScrollIndicator={false}
           style={styles.containerList}
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>
+              We don't have any post for this game yet.
+            </Text>
+          )}
         />
       </SafeAreaView>
     </Background>
