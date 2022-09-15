@@ -7,6 +7,7 @@ import logoImg from './assets/logo.svg';
 import GameBanner from './components/GameBanner';
 import CreateAdBanner from './components/CreateAdBanner';
 import { GameController } from 'phosphor-react';
+import Input from './components/Form/Input';
 
 interface Game{
   id: string;
@@ -54,25 +55,25 @@ function App() {
 
           <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-black/25'>
             <Dialog.Title className='text-3xl text-white font-black'>Publish a Post</Dialog.Title>
-            <form >
-              <div>
-                <label htmlFor="game">What is the game?</label>
-                <input id="game" type="text" placeholder='Select the game that you want to play'/>
+            <form className='mt-8'>
+              <div className='flex flex-col gap-2'>
+                <label className='font-semibold' htmlFor="game">What is the game?</label>
+                <Input id="game" placeholder='Select the game that you want to play'/>
               </div>
 
               <div>
                 <label htmlFor="name">Your name (or nickname)</label>
-                <input id="name" type="text" placeholder='What is your game name' />
+                <Input id="name" type="text" placeholder='What is your game name' />
               </div>
 
               <div>
                 <div>
                   <label htmlFor="yearsPlaying">How long have you being playing?</label>
-                  <input id="yearsPlaying" type="number" placeholder='Is ok be ZERO'/>
+                  <Input id="yearsPlaying" type="number" placeholder='Is ok be ZERO'/>
                 </div>
                 <div>
                   <label htmlFor="discord">What is your Discord ID</label>
-                  <input id="discord" type="text" placeholder='User#0000'/>
+                  <Input id="discord" type="text" placeholder='User#0000'/>
                 </div>
               </div>
 
@@ -83,14 +84,14 @@ function App() {
                 <div>
                   <label htmlFor="hourStart">What is your play time?</label>
                   <div>
-                    <input type="time"  id="hourStart" placeholder='From'/>
-                    <input type="time"  id="hourEnd" placeholder='To'/>
+                    <Input type="time"  id="hourStart" placeholder='From'/>
+                    <Input type="time"  id="hourEnd" placeholder='To'/>
                   </div>
                 </div>
               </div>
 
               <div>
-                <input type="checkbox"/>
+                <Input type="checkbox"/>
                 Do I normally use Voicechat
               </div>
 
