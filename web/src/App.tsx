@@ -24,10 +24,14 @@ function App() {
   const [games, setGames] = useState<Game[]>([]);
   const [ref] = useKeenSlider<HTMLDivElement>({
     slides: {
-      perView: 6,
+      perView: 7,
       spacing: 15
     },
+    loop: true,
+    mode: "free-snap",
   })
+  console.log('here')
+
   useEffect(() =>{
     axios('http://localhost:3333/games')
     .then(response => {
