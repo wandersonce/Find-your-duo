@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog'
+import axios from 'axios';
+import { useKeenSlider } from 'keen-slider/react'
+import 'keen-slider/keen-slider.min.css'
 
 import './styles/main.css';
 
@@ -19,12 +22,16 @@ interface Game{
 
 function App() {
   const [games, setGames] = useState<Game[]>([]);
-
+  const [ref] = useKeenSlider<HTMLDivElement>({
+    slides: {
+      perView: 6,
+      spacing: 15
+    },
+  })
   useEffect(() =>{
-    fetch('http://localhost:3333/games')
-    .then(response => response.json())
-    .then(data => {
-      setGames(data);
+    axios('http://localhost:3333/games')
+    .then(response => {
+      setGames(response.data);
     })
   },[])
 
@@ -36,10 +43,11 @@ function App() {
         Your <span className='text-transparent bg-clip-text bg-nlw-gradient'>Duo</span> is Here
       </h1>
 
-      <div className='grid grid-cols-6 gap-6 mt-16'>
-        {games.map(game => (
+      <div ref={ref} className='keen-slider grid grid-cols-6 gap-6 mt-16'>
+        {games.map((game, index) => (
           <GameBanner 
             key={game.id} 
+            indexMap={index}
             bannerUrl={game.bannerUrl} 
             title={game.title} 
             adsCount={game._count.ads} 
